@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<robot name="four_wheel_robot">
+    <link name="base_link">
+        <visual><geometry><box size="0.4 0.3 0.1"/></geometry><material name="blue"><color rgba="0.1 0.1 0.8 1"/></material></visual>
+        <collision><geometry><box size="0.4 0.3 0.1"/></geometry></collision>
+        <inertial><mass value="5"/><inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/></inertial>
+    </link>
+    <link name="right_rear_wheel_link">
+        <visual><origin xyz="0 0 0" rpy="1.57075 0 0"/><geometry><cylinder radius="0.05" length="0.03"/></geometry><material name="black"><color rgba="0.1 0.1 0.1 1"/></material></visual>
+        <collision><origin xyz="0 0 0" rpy="1.57075 0 0"/><geometry><cylinder radius="0.05" length="0.03"/></geometry></collision>
+        <inertial><mass value="0.1"/><inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/></inertial>
+    </link>
+    <joint name="right_rear_wheel_joint" type="continuous"><parent link="base_link"/><child link="right_rear_wheel_link"/><origin xyz="-0.15 -0.16 0" rpy="0 0 0"/><axis xyz="0 1 0"/></joint>
+    <link name="left_rear_wheel_link">
+        <visual><origin xyz="0 0 0" rpy="1.57075 0 0"/><geometry><cylinder radius="0.05" length="0.03"/></geometry><material name="black"/></visual>
+        <collision><origin xyz="0 0 0" rpy="1.57075 0 0"/><geometry><cylinder radius="0.05" length="0.03"/></geometry></collision>
+        <inertial><mass value="0.1"/><inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/></inertial>
+    </link>
+    <joint name="left_rear_wheel_joint" type="continuous"><parent link="base_link"/><child link="left_rear_wheel_link"/><origin xyz="-0.15 0.16 0" rpy="0 0 0"/><axis xyz="0 1 0"/></joint>
+    <link name="front_caster_link_right">
+        <visual><geometry><sphere radius="0.04"/></geometry><material name="grey"><color rgba="0.5 0.5 0.5 1"/></material></visual>
+        <inertial><mass value="0.05"/><inertia ixx="0.005" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/></inertial>
+    </link>
+    <joint name="front_caster_joint_right" type="fixed"><parent link="base_link"/><child link="front_caster_link_right"/><origin xyz="0.15 -0.12 -0.01" rpy="0 0 0"/></joint>
+    <link name="front_caster_link_left">
+        <visual><geometry><sphere radius="0.04"/></geometry><material name="grey"/></visual>
+        <inertial><mass value="0.05"/><inertia ixx="0.005" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/></inertial>
+    </link>
+    <joint name="front_caster_joint_left" type="fixed"><parent link="base_link"/><child link="front_caster_link_left"/><origin xyz="0.15 0.12 -0.01" rpy="0 0 0"/></joint>
+</robot>
