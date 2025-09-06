@@ -71,7 +71,7 @@ export OPENAI_API_KEY=your-key-here
 
 Run the main experiment script:
 ```bash
-uv run lit_pid/main.py
+export UV_PROJECT_ENVIRONMENT="lit-pid-env" && uv run lit_pid/main.py
 ```
 
 - Results and logs will be saved in the `results/` directory.
