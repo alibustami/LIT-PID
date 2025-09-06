@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "lit-pid"
+version = "0.1.0"
+description = "Language-in-the-loop PID tuning for differential-drive robots"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "Ali Al-Bustami", email = "abustami@umich.edu" },
+    { name = "Zaid Ghazal", email = "zghazal@umich.edu" },
+    { name = "Waleed Abu-Blan" }
+    ]
+# license = { text = "MIT" }
+dependencies = [
+    "openai>=1.106.1",
+    "pybullet>=3.2.7",
+]
+
+# Dev-only dependencies for uv
+[dependency-groups]
+dev = [
+  "pre-commit>=3.7",
+  "black>=24.0",
+  "isort>=5.13",
+  "ruff>=0.5.0",
+  "mypy>=1.10",
+]
+
+# Tell hatchling which package to include (module names can't have hyphens)
+[tool.hatch.build.targets.wheel]
+packages = ["lit_pid"]
+
+[tool.black]
+line-length = 79
+include = "\\.pyi?$"
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | tmp
+  | \.vscode
+  | \.*.egg-info
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
