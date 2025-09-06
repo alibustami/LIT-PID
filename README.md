@@ -6,6 +6,9 @@
 
 LIT-PID is a Python-based framework for automatic PID controller tuning using language models (LLMs) in the loop. It is designed for differential-drive mobile robots and leverages simulation, logging, and URDF-based robot modeling to facilitate research and experimentation in intelligent control systems.
 
+
+![system architecture](figures/Lit%20PID%20Lucidchart.jpg)
+
 ## Features
 
 - **Language-in-the-Loop PID Tuning:** Integrates LLMs to suggest and refine PID parameters based on simulation results.
@@ -42,6 +45,7 @@ results/
 
 - Python 3.11+
 - [pybullet](https://pybullet.org/) (for simulation)
+- [uv](https://github.com/astral-sh/uv) (for fast Python package management)
 - Other dependencies as listed in `pyproject.toml`
 
 ### Installation
@@ -52,24 +56,22 @@ results/
    cd LIT-PID
    ```
 
-2. (Recommended) Create and activate a virtual environment:
+2. Create and activate a virtual environment:
    ```bash
-   python3 -m venv lit-pid-env
-   source lit-pid-env/bin/activate
+   make create-venv
    ```
 
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   # or use poetry if configured
-   poetry install
-   ```
 
 ### Usage
 
+Before running, export your OpenAI API key:
+```bash
+export OPENAI_API_KEY=your-key-here
+```
+
 Run the main experiment script:
 ```bash
-python -m lit_pid.main
+uv run lit_pid/main.py
 ```
 
 - Results and logs will be saved in the `results/` directory.
