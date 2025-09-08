@@ -17,6 +17,7 @@ authors = [
 dependencies = [
     "openai>=1.106.1",
     "pybullet>=3.2.7",
+    "seaborn>=0.13.2",
 ]
 
 # Dev-only dependencies for uv
